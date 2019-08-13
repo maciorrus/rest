@@ -1,0 +1,11 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+home:
+  type      : rest
+  resource  : App\Controller\HomeController
+
+
+api_login_check:
+  path: /api/login_ckeck
