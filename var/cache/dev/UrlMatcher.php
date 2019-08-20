@@ -8,16 +8,17 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
-        '/lists' => [
-            [['_route' => 'get_lists', '_controller' => 'App\\Controller\\HomeController::getListsAction', '_format' => 'json'], null, ['GET' => 0], null, false, false, null],
-            [['_route' => 'post_list', '_controller' => 'App\\Controller\\HomeController::postListAction', '_format' => 'json'], null, ['POST' => 0], null, false, false, null],
-        ],
-        '/images' => [[['_route' => 'post_image', '_controller' => 'App\\Controller\\HomeController::postImageAction', '_format' => 'json'], null, ['POST' => 0], null, false, false, null]],
-        '/api/login_ckeck' => [[['_route' => 'api_login_check'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
+        0 => '{^(?'
+                .'|/_error/(\\d+)(?:\\.([^/]++))?(*:35)'
+            .')/?$}sDu',
     ],
     [ // $dynamicRoutes
+        35 => [
+            [['_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'], ['code', '_format'], null, null, false, true, null],
+            [null, null, null, null, false, false, 0],
+        ],
     ],
     null, // $checkCondition
 ];
